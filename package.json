@@ -1,0 +1,42 @@
+{
+  "name": "loadable",
+  "version": "0.1.0",
+  "main": "dist/index.js",
+  "umd:main": "dist/loadable.umd.production.js",
+  "module": "dist/loadable.es.production.js",
+  "typings": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "start": "tsdx watch",
+    "build": "tsdx build",
+    "test": "tsdx test"
+  },
+  "peerDependencies": {
+    "react": "^16.8.6"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged"
+    }
+  },
+  "prettier": {
+    "bracketSpacing": false,
+    "printWidth": 80,
+    "semi": false,
+    "singleQuote": true,
+    "trailingComma": "all"
+  },
+  "devDependencies": {
+    "@types/jest": "24.0.13",
+    "@types/react": "16.8.17",
+    "husky": "2.3.0",
+    "prettier": "1.17.1",
+    "pretty-quick": "1.10.0",
+    "react": "^16.8.6",
+    "tsdx": "0.5.9",
+    "tslib": "1.9.3",
+    "typescript": "3.4.5"
+  }
+}
