@@ -2,6 +2,9 @@
 
 Loadable is a thin wrapper around `React.lazy` function, that comes with a few handy benefits such as preloading and named exports support.
 
+## Install
+`npm install --save @featherweight/loadable`
+
 ## Examples
 
 Loadable can work with named exports using second argument, while `React.lazy` only works with default export.
