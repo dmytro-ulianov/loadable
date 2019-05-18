@@ -26,10 +26,3 @@ export function loadable<T extends Component, P extends DefaultExport<T>>(
   const Component = lazy(loadComponent)
   return Object.assign(Component, {preload: load})
 }
-
-/*
- * ___ package.json ___
- * - Define react version the right way
- * - Husky & Lint Staged
- * - NPM
- * */

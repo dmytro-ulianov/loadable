@@ -1,6 +1,6 @@
 {
   "name": "@featherweight/loadable",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "main": "dist/index.js",
   "umd:main": "dist/loadable.umd.production.js",
   "module": "dist/loadable.es.production.js",
@@ -12,7 +12,7 @@
     "start": "tsdx watch",
     "build": "tsdx build",
     "test": "tsdx test",
-    "prepublishOnly": "npm build"
+    "prepublish": "npm run build"
   },
   "peerDependencies": {
     "react": "^16.8.6"
