@@ -1,27 +1,44 @@
-# TSDX Bootstrap
+# @featherweight/loadable
 
-This project was bootstrapped with [TSDX](https://github.com/jaredpalmer/tsdx).
+Loadable is a thin wrapper around `React.lazy` function, that comes with a few handy benefits such as preloading and named exports support.
 
-## Local Development
+## Examples
 
-Below is a list of commands you will probably find useful.
+Loadable can work with named exports using second argument, while `React.lazy` only works with default export.
 
-### `npm start` or `yarn start`
+```ts
+// image.tsx
+export const Image: React.FC<ImageProps> = props => ...
+export default Image
+// ---------
 
-Runs the project in development/watch mode. Your project will be rebuilt upon changes. TSDX has a special logger for you convenience. Error messages are pretty printed and formatted for compatibility VS Code's Problems tab.
+import {loadable} from '@featherweight/loadable'
 
-<img src="https://user-images.githubusercontent.com/4060187/52168303-574d3a00-26f6-11e9-9f3b-71dbec9ebfcb.gif" width="600" />
+// if want to use default export
+const Image = loadable(() => import('./image'))
 
-Your library will be rebuilt if you make edits.
+// or if you want to use named export
+const Image = loadable(() => import('./image'), x => x.Image)
 
-### `npm run build` or `yarn build`
+```
 
-Bundles the package to the `dist` folder.
-The package is optimized and bundled with Rollup into multiple formats (CommonJS, UMD, and ES Module).
+And the second handy feature is ability to preload component.
 
-<img src="https://user-images.githubusercontent.com/4060187/52168322-a98e5b00-26f6-11e9-8cf6-222d716b75ef.gif" width="600" />
+```ts
+const App = () => {
+  const [images, setImages] = useState(null)
 
-### `npm test` or `yarn test`
+  useEffect(() => {
+    Image.preload()
+  }, [])
 
-Runs the test watcher (Jest) in an interactive mode.
-By default, runs tests related to files changed since the last commit.
+  return (
+    <div>
+      <button onClick={fetchImages}>load images</button>
+      {images && images.map((img) => (
+        <Image src={img.src} ... />
+      ))}
+    </div>
+  )
+}
+```
