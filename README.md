@@ -17,10 +17,10 @@ export default Image
 
 import {loadable} from '@featherweight/loadable'
 
-// if want to use default export
+// if you wanna default
 const Image = loadable(() => import('./image'))
 
-// or if you want to use named export
+// if you wanna named
 const Image = loadable(() => import('./image'), x => x.Image)
 
 ```
